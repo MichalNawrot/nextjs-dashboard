@@ -36,17 +36,17 @@ export type State = {
 };
 
 export async function createInvoice(prevState: State, formData: FormData) {
-    const rawFormData2 = Object.fromEntries(formData.entries())
-    const rawFormData = {
-        customerId: formData.get('customerId'),
-        amount: formData.get('amount'),
-        status: formData.get('status'),
-    };
+    // const rawFormData2 = Object.fromEntries(formData.entries())
+    // const rawFormData = {
+    //     customerId: formData.get('customerId'),
+    //     amount: formData.get('amount'),
+    //     status: formData.get('status'),
+    // };
     // Test it out:
-    console.log(rawFormData);
-    console.log(typeof rawFormData.amount);
-    console.log("==========================================");
-    console.log(rawFormData2);
+    // console.log(rawFormData);
+    // console.log(typeof rawFormData.amount);
+    // console.log("==========================================");
+    // console.log(rawFormData2);
     // const { customerIdOld, amountOld, statusOld } = CreateInvoice.parse({
     //     customerId: formData.get('customerId'),
     //     amount: formData.get('amount'),
@@ -92,8 +92,6 @@ export async function createInvoice(prevState: State, formData: FormData) {
 // Use Zod to update the expected types
 const UpdateInvoice = FormSchema.omit({ id: true, date: true });
 
-// ...
-
 export async function updateInvoice(id: string, formData: FormData) {
     const { customerId, amount, status } = UpdateInvoice.parse({
         customerId: formData.get('customerId'),
@@ -120,8 +118,6 @@ export async function updateInvoice(id: string, formData: FormData) {
 
 // Use Zod to update the expected types
 const DeleteInvoice = FormSchema.omit({ id: true, date: true });
-
-// ...
 
 export async function deleteInvoice(id: string) {
     throw new Error('Failed to Delete Invoice');
